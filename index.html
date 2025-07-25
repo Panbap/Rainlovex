@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website rainlove - nơi chia sẻ tình yêu thương.">
+  <title>Textlove</title>
+  <link rel="icon" href="https://github.com/Panbap/anh/blob/main/icon1.png?raw=true" type="image/png">
+  <style>
+    html,
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      color: white;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #sticker {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: auto;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #pinkboard {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9;
+      pointer-events: none;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      #sticker {
+        width: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="rainCanvas"></canvas>
+  <canvas id="canvas"></canvas>
+  <img id="sticker" src="" alt="Sticker" />
+  <audio id="bgm" loop></audio>
+  <canvas id="pinkboard"></canvas>
+  
+  <script src="./assets/rainlove.js"></script>
+  <script>
+    const canva = document.getElementById('rainCanvas');
+    const ctxs = canva.getContext('2d');
+
+    const letters = 'I LOVE U'.split('');
+    const fontSize = 16;
+    let columns = Math.floor(window.innerWidth / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function resizeCanvas() {
+      canva.width = window.innerWidth;
+      canva.height = window.innerHeight;
+      columns = Math.floor(canva.width / fontSize);
+      drops.length = columns;
+      drops.fill(1);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawRainBackground() {
+      ctxs.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctxs.fillRect(0, 0, canva.width, canva.height);
+      ctxs.fillStyle = '#f584b7';
+      ctxs.font = fontSize + 'px arial';
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctxs.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canva.height || Math.random() > 0.95) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawRainBackground, 50);
+  </script>
+
+</body>
+
+</html>
