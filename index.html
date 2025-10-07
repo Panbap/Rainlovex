@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website rainlove - nơi chia sẻ tình yêu thương.">
+  <title>Rainlove</title>
+  <link rel="icon" href="https://github.com/Panbap/anh/blob/main/icon1.png?raw=true" type="image/png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    html,
+    body {
+      font-family: "Mali", cursive;
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      color: white;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #sticker {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: auto;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #pinkboard {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9;
+      pointer-events: none;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      #sticker {
+        width: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="rainCanvas"></canvas>
+  <canvas id="canvas"></canvas>
+  <img id="sticker" src="" alt="Sticker" />
+  <audio id="bgm" loop></audio>
+  <canvas id="pinkboard"></canvas>
+  <dev id="panbap.github.io"></dev>
+
+  <script data-version="1.0" type="text/javascript" src="./assets/vixE0aNAhLst1tcAHKostuTX.js?v=1.0" onerror="alert('Không tải được')"></script>
+  <script data-version="1.0" type="text/javascript" src="./assets/zPdiaA9aMC0qSb0ocp2C5dZz.js?v=1.0" onerror="alert('Không tải được')"></script>
+</body>
+
+</html>
